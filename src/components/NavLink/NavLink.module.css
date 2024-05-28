@@ -1,0 +1,7 @@
+.navLink .navLink__text {
+  @apply text-gray;
+}
+
+.navLink:hover .navLinkText {
+  @apply text-white;
+}
