@@ -20,6 +20,9 @@ export default {
       spacing: {
         0.25: "0.0625rem",
         0.5: "0.125rem",
+        38: "9.5rem",
+        19: "4.75rem",
+        76: "19rem",
       },
       width: {
         "min-content": "min-content",

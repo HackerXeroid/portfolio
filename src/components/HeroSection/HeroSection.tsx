@@ -2,6 +2,7 @@
 import HeroImg from "../../assets/hero-image.png";
 import Dots from "../../assets/person_front_dots.svg";
 import Pattern from "../../assets/person_behind_home.svg";
+import RectangleImg from "../../assets/rectangle.svg";
 
 import ContactBtn from "../ContactBtn/ContactBtn";
 import CurrentlyWorkingOn from "../CurrentlyWorkingOn/CurrentlyWorkingOn";
@@ -40,7 +41,14 @@ function HeroSection() {
           <CurrentlyWorkingOn currProject="Portfolio" />
         </div>
       </div>
-      <Quote />
+      <div>
+        <img
+          src={RectangleImg}
+          alt="rectangle"
+          className="absolute w-24 h-24 -right-6 mt-4"
+        />
+        <Quote />
+      </div>
     </>
   );
 }

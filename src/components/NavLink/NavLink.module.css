@@ -1,7 +1,29 @@
-.navLink .navLink__text {
-  @apply text-gray;
+.navLink {
+  position: relative;
 }
 
-.navLink:hover .navLinkText {
+.navLinkText {
+  @apply transition-all;
+}
+
+.navLink::after {
+  @apply bg-white top-1/2 -translate-y-1/2 transition-all;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  left: 0;
+}
+
+.navLink:hover::after {
+  @apply w-1/2;
+}
+
+.active .navLinkText {
   @apply text-white;
+}
+
+.active::after,
+.active:hover::after {
+  @apply w-0;
 }

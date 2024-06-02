@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.c-gray-text {
+  @apply text-gray font-medium text-base;
+}

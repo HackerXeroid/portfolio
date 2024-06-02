@@ -1,19 +1,33 @@
+import { Link } from "react-router-dom";
 import styles from "./NavLink.module.css";
 
 interface NavLinkProps {
   url: string;
   text: string;
-  isActive?: boolean;
+  activePageRoute: string;
+  setActivePageRoute: (section: string) => void;
 }
 
-function NavLink({ url, text, isActive }: NavLinkProps) {
-  const color: string = isActive ? "text-white" : "text-gray";
+function NavLink({
+  url,
+  text,
+  activePageRoute,
+  setActivePageRoute,
+}: NavLinkProps) {
+  const isActive = url.toLowerCase() === activePageRoute.toLowerCase();
+  const handleClick = () => {
+    setActivePageRoute(url.toLowerCase());
+  };
 
   return (
-    <a href={url} className={`${styles.navLink} font-medium`}>
+    <Link
+      to={url}
+      onClick={handleClick}
+      className={`${styles.navLink} font-medium ${isActive && styles.active}`}
+    >
       <span className="text-primary">#</span>
-      <span className={`${styles.navLinkText} ${color}`}>{text}</span>
-    </a>
+      <span className={`${styles.navLinkText} text-gray`}>{text}</span>
+    </Link>
   );
 }
 export default NavLink;

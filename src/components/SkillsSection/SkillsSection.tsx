@@ -3,14 +3,27 @@ import SkillCategory from "../SkillCategory/SkillCategory";
 import Dots from "../../assets/person_front_dots.svg";
 import Pattern from "../../assets/person_behind_home.svg";
 import Rectangle from "../../assets/rectangle.svg";
+import Masonry from "react-masonry-css";
 
-function SkillsSection() {
-  // 112 / 4 = 28
-  // 209 / 4 = 52
+interface SkillCategory {
+  category: string;
+  skills: string[];
+}
+
+interface SkillsSectionProps {
+  skills: SkillCategory[];
+}
+
+function SkillsSection({ skills }: SkillsSectionProps) {
+  const breakpointColumnsObj = {
+    default: 3,
+  };
+
   return (
     <section className="mb-28">
       <SectionHeading headingText="skills" widthClass="w-1/4" />
       <div className="flex">
+        {/* Left: Shapes */}
         <div className="w-2/5 relative">
           <img
             src={Dots}
@@ -39,60 +52,19 @@ function SkillsSection() {
             className="absolute bottom-16 left-80 w-13 h-13 right-64 w-14 h-14"
           />
         </div>
-        <div className="flex justify-end gap-4 w-3/5">
-          {/* 1st column */}
-          <div className="flex flex-col gap-4">
-            <SkillCategory
-              category="Languages"
-              skills={["TypeScript", "Lua", "Python", "JavaScript"]}
-              className="w-44"
-            />
-          </div>
-
-          {/* 2nd column */}
-          <div className="flex flex-col gap-4 w-44">
-            <SkillCategory
-              category="Databases"
-              skills={["SQLite", "PostgreSQL", "Mongo"]}
-              className="w-44"
-            />
-
-            <SkillCategory
-              category="Other"
-              skills={["HTML", "CSS", "EJS", "SCSS", "REST", "Jinja"]}
-              className="w-44"
-            />
-          </div>
-
-          {/* 3rd column */}
-          <div className="flex flex-col gap-4">
-            <SkillCategory
-              category="Tools"
-              skills={[
-                "VSCode",
-                "Neovim",
-                "Linux",
-                "Figma",
-                "XFCE",
-                "Arch",
-                "Git",
-                "Font\u00A0Awesome",
-              ]}
-              className="w-48"
-            />
-            <SkillCategory
-              category="Frameworks"
-              skills={[
-                "React",
-                "Vue",
-                "Disnake",
-                "Discord.js",
-                "Flask",
-                "Express.js",
-              ]}
-              className="w-48"
-            />
-          </div>
+        {/* Right: Skills categorized */}
+        <div className="w-3/5 flex justify-end">
+          <Masonry
+            className="flex items-center w-auto"
+            columnClassName="grid-item ml-2"
+            breakpointCols={breakpointColumnsObj}
+          >
+            {skills.map((skillCategory) => (
+              <div className="mb-2" key={skillCategory.category}>
+                <SkillCategory {...skillCategory} />
+              </div>
+            ))}
+          </Masonry>
         </div>
       </div>
     </section>
