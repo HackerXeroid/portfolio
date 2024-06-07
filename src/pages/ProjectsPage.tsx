@@ -10,7 +10,6 @@ interface ProjectsPageProps {
     demo: string;
     github: string;
   }[];
-  viewAll: boolean;
 }
 
 function ProjectsPage({ projects }: ProjectsPageProps) {
