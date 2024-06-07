@@ -2,6 +2,7 @@ import LineBreak from "../LineBreak/LineBreak";
 import SectionHeading from "../SectionHeading/SectionHeading";
 import AboutMeImg from "../../assets/about_me.png";
 import PatternImg from "../../assets/person_front_dots.svg";
+import { Link } from "react-router-dom";
 
 function AboutSection() {
   return (
@@ -24,9 +25,12 @@ function AboutSection() {
             establish their presence online. I always strive to learn about the
             newest technologies and frameworks.
           </p>
-          <button className="text-base font-medium text-white px-4 py-2 border border-primary">
+          <Link
+            to="/about"
+            className="text-base font-medium text-white px-4 py-2 border border-primary"
+          >
             Read more -&gt;
-          </button>
+          </Link>
         </div>
         {/* Right part */}
         <div className="w-1/3 relative">

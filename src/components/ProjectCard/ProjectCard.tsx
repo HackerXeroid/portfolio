@@ -7,7 +7,7 @@ interface ProjectCardProps {
 
 function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <figure className="rounded overflow-hidden shadow-lg m-4 border border-gray w-1/3">
+    <figure className=" rounded overflow-hidden shadow-lg m-4 border border-gray w-1/3">
       {/* Project Image */}
       <img src={project.image} alt={project.name} className="w-full" />
 

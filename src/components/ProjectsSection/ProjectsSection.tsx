@@ -13,14 +13,24 @@ export interface Project {
 
 interface ProjectsSectionProps {
   projects: Project[];
+  viewAll?: boolean;
+  howMany?: number;
 }
 
-function ProjectsSection({ projects }: ProjectsSectionProps) {
+function ProjectsSection({
+  projects,
+  viewAll = true,
+  howMany = 3,
+}: ProjectsSectionProps) {
   return (
     <section className="mb-24">
-      <SectionHeading headingText="projects" widthClass="w-1/2" viewAll />
+      <SectionHeading
+        headingText="projects"
+        widthClass="w-1/2"
+        viewAll={viewAll}
+      />
       <div className="flex items-start">
-        {projects.slice(0, 3).map((project) => (
+        {projects.slice(0, howMany).map((project) => (
           <ProjectCard key={project.name} project={project} />
         ))}
       </div>

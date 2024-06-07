@@ -10,9 +10,10 @@ interface ProjectsPageProps {
     demo: string;
     github: string;
   }[];
+  viewAll: boolean;
 }
 
 function ProjectsPage({ projects }: ProjectsPageProps) {
-  return <ProjectsSection projects={projects} />;
+  return <ProjectsSection projects={projects} viewAll={false} howMany={3} />;
 }
 export default ProjectsPage;
