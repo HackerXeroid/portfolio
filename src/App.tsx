@@ -142,8 +142,11 @@ function App() {
             path="/home"
             element={<HomePage projects={projects} skills={skills} />}
           />
-          <Route path="/projects" element={<ProjectsPage />} />
-          <Route path="/skills" element={<SkillsPage />} />
+          <Route
+            path="/projects"
+            element={<ProjectsPage projects={projects} />}
+          />
+          <Route path="/skills" element={<SkillsPage skills={skills} />} />
           <Route path="/contacts" element={<ContactsPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="*" element={<ErrorPage />} />

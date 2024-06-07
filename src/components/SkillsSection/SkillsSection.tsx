@@ -5,12 +5,12 @@ import Pattern from "../../assets/person_behind_home.svg";
 import Rectangle from "../../assets/rectangle.svg";
 import Masonry from "react-masonry-css";
 
-interface SkillCategory {
+export interface SkillCategory {
   category: string;
   skills: string[];
 }
 
-interface SkillsSectionProps {
+export interface SkillsSectionProps {
   skills: SkillCategory[];
 }
 

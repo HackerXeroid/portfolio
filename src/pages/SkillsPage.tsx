@@ -1,11 +1,12 @@
-import LineBreak from "../components/LineBreak/LineBreak";
+import SkillsSection, {
+  SkillCategory,
+} from "../components/SkillsSection/SkillsSection";
 
-function SkillsPage() {
-  return (
-    <div className="text-white">
-      Skills Page: The page is almost done. <LineBreak />
-      It's just the extension of the Skills Section.
-    </div>
-  );
+interface SkillsPageProps {
+  skills: SkillCategory[];
+}
+
+function SkillsPage({ skills }: SkillsPageProps) {
+  return <SkillsSection skills={skills} />;
 }
 export default SkillsPage;

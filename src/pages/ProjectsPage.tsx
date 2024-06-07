@@ -1,11 +1,18 @@
-import LineBreak from "../components/LineBreak/LineBreak";
+import ProjectsSection from "../components/ProjectsSection/ProjectsSection";
 
-function ProjectsPage() {
-  return (
-    <div className="text-white">
-      Projects Page: The page is almost done. <LineBreak />
-      It's just the extension of the Projects Section.
-    </div>
-  );
+interface ProjectsPageProps {
+  projects: {
+    id: number;
+    name: string;
+    image: string;
+    technologies: string[];
+    description: string;
+    demo: string;
+    github: string;
+  }[];
+}
+
+function ProjectsPage({ projects }: ProjectsPageProps) {
+  return <ProjectsSection projects={projects} />;
 }
 export default ProjectsPage;
