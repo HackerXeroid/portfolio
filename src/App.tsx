@@ -17,7 +17,7 @@ import ErrorPage from "./pages/ErrorPage";
 import ProjectsPage from "./pages/ProjectsPage";
 import NotHandledScreen from "./screens/NotHandledScreen";
 import useWindowWidth from "./hooks/useWindowWidtth";
-import { useTranslation, initReactI18next } from "react-i18next";
+import { initReactI18next } from "react-i18next";
 import i18n from "i18next";
 import resources from "./translations/translations";
 
@@ -112,8 +112,6 @@ i18n.use(initReactI18next).init({
 });
 
 function App() {
-  const { t } = useTranslation();
-
   const windowWidth = useWindowWidth();
   const [activePageRoute, setActivePageRoute] = useState("/");
   const [pageLanguage, setPageLanguage] = useState("EN");
