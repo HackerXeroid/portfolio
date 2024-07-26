@@ -13,6 +13,12 @@ interface ProjectsPageProps {
 }
 
 function ProjectsPage({ projects }: ProjectsPageProps) {
-  return <ProjectsSection projects={projects} viewAll={false} howMany={3} />;
+  return (
+    <ProjectsSection
+      projects={projects}
+      viewAll={false}
+      howMany={projects.length}
+    />
+  );
 }
 export default ProjectsPage;

@@ -1,13 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Icon from "./components/Icon/Icon";
 import NavBar from "./components/NavBar/NavBar";
 import GithubImg from "./assets/github.svg";
 import DiscordImg from "./assets/discord.svg";
-import ChertNodesImg from "./assets/project_chertnodes.jpg";
-import ProtectXImg from "./assets/project_protectx.jpg";
-import KahootAnswersImg from "./assets/project_kahoot_answers.jpg";
-import KotikBotImg from "./assets/project_kotik_bot.jpg";
-import PortfolioImg from "./assets/project_portfolio.jpg";
+import JobPreviewDashboardImg from "./assets/job-dashboard-project.png";
+import ChatAppProjectImg from "./assets/chat-app-project.png";
+import BetterChatAppUiImg from "./assets/chat-app-ui.png";
+import PortfolioImg from "./assets/portfolio-image.png";
+import StudentCommitTrackerImg from "./assets/student-commit-tracker-image.png";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import ContactsPage from "./pages/ContactsPage";
@@ -15,100 +15,117 @@ import SkillsPage from "./pages/SkillsPage";
 import AboutPage from "./pages/AboutPage";
 import ErrorPage from "./pages/ErrorPage";
 import ProjectsPage from "./pages/ProjectsPage";
+import NotHandledScreen from "./screens/NotHandledScreen";
+import useWindowWidth from "./hooks/useWindowWidtth";
+import { useTranslation, initReactI18next } from "react-i18next";
+import i18n from "i18next";
+import resources from "./translations/translations";
 
 const projects = [
   {
-    id: 1,
-    name: "ChertNodes",
-    image: ChertNodesImg,
-    technologies: ["HTML", "SCSS", "Python", "Flask"],
-    description: "Minecraft servers hosting",
-    demo: "https://chertnodes.com",
-    github: "https://github.com/ChertCraft/chertnodes",
+    id: 4,
+    name: "Students commit tracker",
+    image: StudentCommitTrackerImg,
+    technologies: [
+      "React",
+      "Tailwind",
+      "shadcn/ui",
+      "Node",
+      "Express.js",
+      "MongoDB",
+      "OpenAI",
+    ],
+    description:
+      "AI-led GitHub grading of student assignments with leaderboard.",
+    demo: "#",
+    github: "https://github.com/HackerXeroid/students-commit-tracker",
   },
   {
     id: 2,
-    name: "ProtectX",
-    image: ProtectXImg,
-    technologies: [
-      "React",
-      "Express",
-      "Discord.js",
-      "Node.js",
-      "HTML",
-      "SCSS",
-      "Python",
-      "Flask",
-    ],
-    description: "Discord anti-crash bot",
-    demo: "https://protectx.xyz",
-    github: "https://github.com/ChertCraft/protectx",
+    name: "Anonymous Chat",
+    image: ChatAppProjectImg,
+    technologies: ["React.js", "Express.js", "Socket.io"],
+    description:
+      "A chat application for anonymous conversations. [PS: Server starts in 2m]",
+    demo: "https://chat-app-frontend1.netlify.app/",
+    github: "https://github.com/HackerXeroid/chat-app-frontend",
+  },
+  {
+    id: 1,
+    name: "Job Preview Dashboard",
+    image: JobPreviewDashboardImg,
+    technologies: ["React.js", "Tailwind", "Vite"],
+    description: "A dashboard for previewing job listings",
+    demo: "https://jobdashboardpreview.netlify.app/",
+    github: "https://github.com/HackerXeroid/job_preview_dashboard",
   },
   {
     id: 3,
-    name: "Kahoot Answers Viewer",
-    image: KahootAnswersImg,
-    technologies: ["CSS", "Express", "Node.js"],
-    description: "Get answers to your kahoot quiz",
-    demo: "https:/ /kahoot-answers.herokuapp.com",
-    github: "https://github.com/ChertCraft/kahoot-answers",
-  },
-  {
-    id: 4,
-    name: "Kotik Bot",
-    image: KotikBotImg,
-    technologies: ["HTML", "CSS", "JS"],
-    description: "Multi-functional discord bot",
-    demo: "https://kotikbot.xyz",
-    github: "https://github.com/ChertCraft/kotik-bot",
+    name: "Better Chat app UI",
+    image: BetterChatAppUiImg,
+    technologies: ["React", "TypeScript", "shadcn/ui"],
+    description: "A better version Chat application UI.",
+    demo: "https://the-ultimate-chat-app.netlify.app/",
+    github: "https://github.com/HackerXeroid/firebase-chat-app",
   },
   {
     id: 5,
     name: "Portfolio",
     image: PortfolioImg,
-    technologies: ["Vue", "TS", "Less"],
-    description: "You're using it rn",
-    demo: "https://shivam.vercel.app",
-    github: "https://github.com/ChertCraft/portfolio",
+    technologies: ["React", "TypeScript", "Tailwind"],
+    description:
+      "My personal portfolio website showcasing my projects and skills.",
+    demo: "https://theshivam.netlify.app",
+    github: "https://github.com/HackerXeroid/portfolio",
   },
 ];
 
 const skills = [
   {
     category: "Languages",
-    skills: ["TypeScript", "Lua", "Python", "JavaScript"],
+    skills: ["TypeScript", "JavaScript", "C++", "Java", "Python"],
   },
   {
     category: "Databases",
-    skills: ["SQLite", "PostgreSQL", "Mongo"],
+    skills: ["MySQL", "MongoDB"],
   },
   {
     category: "Tools",
-    skills: [
-      "VSCode",
-      "Neovim",
-      "Linux",
-      "Figma",
-      "XFCE",
-      "Arch",
-      "Git",
-      "Font Awesome",
-    ],
+    skills: ["VSCode", "Linux", "Figma", "Git", '"Font Awesome"'],
   },
   {
     category: "Other",
-    skills: ["HTML", "CSS", "EJS", "SCSS", "REST", "Jinja"],
+    skills: ["HTML", "CSS", "SCSS", "REST"],
   },
   {
     category: "Frameworks",
-    skills: ["React", "Vue", "Disnake", "Discord.js", "Flask", "Express.js"],
+    skills: ["React", "Express.js", '"Spring Boot"'],
   },
 ];
 
-function App() {
-  const [activePageRoute, setActivePageRoute] = useState("fsdasd");
+i18n.use(initReactI18next).init({
+  resources,
+  lng: "ru",
+  interpolation: {
+    escapeValue: false,
+  },
+});
 
-  return (
+function App() {
+  const { t } = useTranslation();
+
+  const windowWidth = useWindowWidth();
+  const [activePageRoute, setActivePageRoute] = useState("/");
+  const [pageLanguage, setPageLanguage] = useState("EN");
+  console.log(pageLanguage);
+
+  useEffect(() => {
+    if (i18n.language !== pageLanguage) {
+      i18n.changeLanguage(pageLanguage.toLowerCase());
+    }
+  }, [pageLanguage]);
+
+  return windowWidth >= 1208 ? (
     <div className="max-w-5xl mx-auto">
       <div className="absolute left-4 top-0 flex flex-col items-center gap-2">
         <div className="w-0.25 h-48 bg-gray"></div>
@@ -132,6 +149,7 @@ function App() {
           activePageRoute={activePageRoute}
           setActivePageRoute={setActivePageRoute}
           name="Shivam"
+          setPageLanguage={setPageLanguage}
         />
         <Routes>
           <Route
@@ -153,6 +171,8 @@ function App() {
         </Routes>
       </Router>
     </div>
+  ) : (
+    <NotHandledScreen />
   );
 }
 export default App;

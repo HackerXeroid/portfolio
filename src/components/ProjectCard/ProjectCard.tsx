@@ -7,7 +7,7 @@ interface ProjectCardProps {
 
 function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <figure className=" rounded overflow-hidden shadow-lg m-4 border border-gray w-1/3">
+    <figure className="w-full rounded overflow-hidden shadow-lg m-4 border border-gray">
       {/* Project Image */}
       <img src={project.image} alt={project.name} className="w-full" />
 
@@ -28,12 +28,27 @@ function ProjectCard({ project }: ProjectCardProps) {
 
           {/* Button container */}
           <div className="flex gap-4">
-            <button className="py-2 px-4 border border-gray">
+            <a
+              href={project.demo === "#" ? "#" : project.demo}
+              onClick={(e) => {
+                if (project.demo === "#") {
+                  e.preventDefault();
+                }
+              }}
+              target="_blank"
+              className={`${
+                project.demo === "#" && "disabled opacity-60 cursor-not-allowed"
+              } py-2 px-4 border border-gray`}
+            >
               Live &lt;~&gt;
-            </button>
-            <button className="py-2 px-4 border border-gray flex gap-3">
+            </a>
+            <a
+              href={project.github}
+              target="_blank"
+              className="cursor-pointer py-2 px-4 border border-gray flex gap-3"
+            >
               Github <img src={Github} alt="Github" />
-            </button>
+            </a>
           </div>
         </div>
       </figcaption>

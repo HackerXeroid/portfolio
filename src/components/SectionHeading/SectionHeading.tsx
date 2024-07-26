@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 interface SectionHeadingProps {
   headingText: string;
   widthClass: string;
@@ -17,12 +19,12 @@ function SectionHeading({
       </h2>
       <hr className={`bg-primary h-0.5 w-1/2 border-none ${widthClass}`} />
       {viewAll && (
-        <a
-          href="#view-all"
+        <Link
+          to="/projects"
           className="ml-auto text-white font-medium text-base"
         >
           View All ~~&gt;
-        </a>
+        </Link>
       )}
     </div>
   );

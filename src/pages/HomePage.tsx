@@ -35,7 +35,7 @@ function HomePage({ skills, projects }: HomePageProps) {
       <div>
         <img src={RectangleImg} className="absolute w-38 h-38 mt-32 -left-19" />
         <img src={PatternImg} className="absolute w-24 h-24 -right-5 mt-76" />
-        <AboutSection />
+        <AboutSection showDownloadResumeBtn={false} />
       </div>
       {/* Contact Section */}
       <div>
@@ -43,7 +43,7 @@ function HomePage({ skills, projects }: HomePageProps) {
         <ContactSection />
       </div>
       {/* Footer */}
-      <Footer />
+      <Footer jobs={["React Specialist", "UI/UX Enthusiast"]} />
     </>
   );
 }

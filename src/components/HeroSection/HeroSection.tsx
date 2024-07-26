@@ -16,11 +16,15 @@ function HeroSection() {
         <div className="flex flex-col items-start justify-center">
           <MainHeading
             name="Shivam"
-            jobs={["web designer", "front-end developer"]}
+            jobs={["React Specialist", "UI/UX Enthusiast"]}
           />
 
           <p className="text-lg text-gray mb-6">
-            He crafts responsive websites where technologies meet creativity
+            He crafts <span className="text-primary">responsive websites</span>{" "}
+            where technology meets creativity and builds
+            <span className="text-primary">
+              &nbsp;complex web applications.
+            </span>
           </p>
 
           <ContactBtn text={"Contact me!!"} />
@@ -38,7 +42,7 @@ function HeroSection() {
             <img src={Pattern} className="absolute -left-3 top-20 z-10" />
           </div>
 
-          <CurrentlyWorkingOn currProject="Portfolio" />
+          <CurrentlyWorkingOn currProject="student-commit-tracker" />
         </div>
       </div>
       <div>

@@ -29,7 +29,7 @@ function ProjectsSection({
         widthClass="w-1/2"
         viewAll={viewAll}
       />
-      <div className="flex items-start">
+      <div className="grid grid-cols-3 gap-8 items-center">
         {projects.slice(0, howMany).map((project) => (
           <ProjectCard key={project.name} project={project} />
         ))}

@@ -4,7 +4,7 @@ import FigmaImg from "../../assets/figma.svg";
 import DiscordImg from "../../assets/discord.svg";
 import Icon from "../Icon/Icon";
 
-function Footer() {
+function Footer({ jobs }: { jobs: string[] }) {
   return (
     <footer className="p-8 pt-0">
       <hr className="absolute bg-gray left-0 w-screen h-0.25 border-none" />
@@ -22,7 +22,19 @@ function Footer() {
             </a>
           </div>
           <p className="text-base text-white font-normal">
-            Web designer and front-end developer
+            {jobs.map((job, i) => {
+              return (
+                <span key={i}>
+                  {job}
+
+                  {i === jobs.length - 2
+                    ? " and "
+                    : i === jobs.length - 1
+                    ? ""
+                    : ", "}
+                </span>
+              );
+            })}
           </p>
         </div>
         {/* Right */}

@@ -11,6 +11,7 @@
   content: "";
   position: absolute;
   width: 100%;
+  text-decoration: wavy;
   height: 1px;
   left: 0;
 }

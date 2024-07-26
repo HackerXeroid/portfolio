@@ -2,6 +2,7 @@ import SectionHeading from "../SectionHeading/SectionHeading";
 import DiscordImg from "../../assets/discord.svg";
 import MailImg from "../../assets/mail.svg";
 import Icon from "../Icon/Icon";
+import LineBreak from "../LineBreak/LineBreak";
 
 function ContactSection() {
   return (
@@ -10,8 +11,9 @@ function ContactSection() {
       <div className="flex gap-48">
         <div className="w-2/3">
           <p className="text-gray font-medium text-base">
-            I&apos;m interested in freelance opportunities. However, if you have
-            other request or question, don&apos;t hesitate to contact me
+            I&apos;m interested in internship opportunities.
+            <LineBreak /> However, if you have other request or question,
+            don&apos;t hesitate to contact me.
           </p>
         </div>
         <div className="w-1/3 flex items-end justify-end">

@@ -2,11 +2,15 @@ import { useState } from "react";
 
 import ChevronImg from "../../assets/chevron-down.svg";
 
-const CustomDropdown = () => {
+const CustomDropdown = ({
+  options,
+  onOptionChange,
+}: {
+  options: string[];
+  onOptionChange: (option: string) => void;
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("EN");
-
-  const options = ["EN", "RU", "UA"];
 
   return (
     <div className="dropdown text-gray font-semibold text-base">
@@ -35,22 +39,23 @@ const CustomDropdown = () => {
         )}
       </button>
       <ul
-        className={`options absolute mt-1 font-normal flex flex-col gap-2 p-2 border-gray border whitespace-nowrap transition-all duration-200 ${
+        className={`options absolute mt-1 font-normal flex flex-col gap-2 p-2 border-gray border whitespace-nowrap transition-all duration-200 z-50 ${
           isOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
       >
         {options.map((option) =>
           option === selectedOption ? null : (
-            <li
+            <button
               key={option}
               onClick={() => {
                 setSelectedOption(option);
+                onOptionChange(option);
                 setIsOpen(false);
               }}
               className="cursor-pointer"
             >
               {option}
-            </li>
+            </button>
           )
         )}
       </ul>

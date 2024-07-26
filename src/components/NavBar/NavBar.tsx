@@ -8,6 +8,7 @@ interface NavBarProps {
   name: string;
   activePageRoute: string;
   setActivePageRoute: (section: string) => void;
+  setPageLanguage: (language: string) => void;
 }
 
 const urls = [
@@ -33,7 +34,12 @@ const urls = [
   },
 ];
 
-function NavBar({ name, activePageRoute, setActivePageRoute }: NavBarProps) {
+function NavBar({
+  name,
+  activePageRoute,
+  setActivePageRoute,
+  setPageLanguage,
+}: NavBarProps) {
   const location = useLocation();
 
   useEffect(() => {
@@ -59,7 +65,10 @@ function NavBar({ name, activePageRoute, setActivePageRoute }: NavBarProps) {
           </li>
         ))}
         <li>
-          <CustomDropdown />
+          <CustomDropdown
+            onOptionChange={setPageLanguage}
+            options={["EN", "ES", "RU", "UA"]}
+          />
         </li>
       </ul>
     </nav>

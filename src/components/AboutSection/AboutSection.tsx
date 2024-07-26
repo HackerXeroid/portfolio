@@ -4,7 +4,11 @@ import AboutMeImg from "../../assets/about_me.png";
 import PatternImg from "../../assets/person_front_dots.svg";
 import { Link } from "react-router-dom";
 
-function AboutSection() {
+function AboutSection({
+  showDownloadResumeBtn,
+}: {
+  showDownloadResumeBtn: boolean;
+}) {
   return (
     <div className="mb-28">
       <div>
@@ -14,23 +18,37 @@ function AboutSection() {
         {/* Left part */}
         <div className="w-2/3">
           <p className="text-gray text-base leading-6 mb-7">
-            Hello, I&apos;m Shivam! <LineBreak times={2} />
-            I&apos;m a self-taught front-end developer based in Bengaluru,
-            India. I can develop responsive websites from scratch and raise them
-            into modern user-friendly web experiences. <LineBreak
-              times={2}
-            />{" "}
-            Transforming my creativity and knowledge into a websites has been my
-            passion for over a year. I have been helping various clients to
-            establish their presence online. I always strive to learn about the
-            newest technologies and frameworks.
+            Hello, I'm Shivam! <LineBreak times={2} />
+            I'm a self-taught{" "}
+            <span className="text-primary">React Specialist</span> and{" "}
+            <span className="text-primary">UI/UX Enthusiast</span> based in
+            Bengaluru, India. I craft responsive websites from scratch and
+            transform them into modern, user-friendly web experiences.{" "}
+            <LineBreak times={2} />
+            For over a year, my passion has been to turn my creativity and
+            knowledge into websites. Even though I haven't had any gigs yet,
+            I've built various projects to hone my skills and establish my
+            online presence. I'm always eager to learn about the latest
+            technologies and frameworks.
           </p>
-          <Link
-            to="/about"
-            className="text-base font-medium text-white px-4 py-2 border border-primary"
-          >
-            Read more -&gt;
-          </Link>
+          {!showDownloadResumeBtn && (
+            <Link
+              to="/about"
+              className="text-base font-medium text-white px-4 py-2 border border-primary"
+            >
+              Read more -&gt;
+            </Link>
+          )}
+          {showDownloadResumeBtn && (
+            <a
+              href="https://drive.google.com/file/d/1LA9rZ4i3U1XyQmgursfBSw94-qx5DjH7/view"
+              target="_blank"
+              rel="noreferrer"
+              className="text-base font-medium text-white px-4 py-2 border border-primary"
+            >
+              Download Resume
+            </a>
+          )}
         </div>
         {/* Right part */}
         <div className="w-1/3 relative">
